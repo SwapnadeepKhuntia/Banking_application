@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank</title>
+    <style>
+        .header{
+            display: flex;
+            justify-content: center;
+        }
+        .header div{
+            margin: 20px;
+            padding: 5px 20px;
+        }
+        .div1{
+               background-color: aqua;
+        }
+        .div2{
+              background-color: green;
+        }
+        .div3{
+              background-color: blue;
+        }
+        .main{
+            display: flex;
+            justify-content: center;
+            
+        }
+        .left-main{
+           background-color: rgb(158, 182, 174);
+           padding: 10px 100px ;
+        }
+        .right-main{
+           background-color: rgb(83, 86, 85);
+           padding: 10px 100px ;
+        }
+        .left-main input{
+            padding: 10px 80px 10px 7px;
+            border-radius: 5px;
+            border: none;
+        }
+        .left-main button{
+            margin-top: 10px;
+            padding: 5px 10px;
+            border-radius: 10px;
+            border: none;
+            background-color: rgb(22, 201, 28);
+            cursor: pointer;
+        }
+        .right-main button{
+           margin-top: 10px;
+            padding: 5px 10px;
+            border-radius: 10px;
+            border: none;
+            background-color: rgb(22, 201, 28);
+            cursor: pointer;
+        }
+        .right-main input{
+           padding: 10px 80px 10px 7px;
+            border-radius: 5px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+   <div class="header">
+      <div class="div1">
+          <h1>Deposit</h1>
+          <span id="deposit">00</span>
+      </div>
+      <div class="div2">
+          <h1>Withdrow</h1>
+          <span id="withdrow">00</span>
+      </div>
+      <div class="div3">
+          <h1>Balance</h1>
+          <span id="balance">00</span>
+      </div>
+   </div>
+     <div class="main">
+        <div class="left-main">
+            <h1>Deposit</h1>
+            <input type="number" placeholder="Deposit" id="depositmoney"><br>
+            <button id="depo">Deposit</button>
+       </div>
+
+       <div class="right-main">
+           <h1>Withdrow</h1>
+           <input type="number" placeholder="Withdrow" id="withdrowmoney"><br>
+           <button id="withd">Withdrow</button>
+      </div>
+    </div>
+    <script>
+        let depo=document.getElementById("depo");
+        let withd=document.getElementById("withd");
+        let deposit=document.getElementById("deposit");
+        let withdrow=document.getElementById("withdrow");
+        let balance=document.getElementById("balance");
+        let depositmoney=document.getElementById("depositmoney")
+        let withdrowmoney=document.getElementById("withdrowmoney")
+        
+        depo.addEventListener("click",()=>{
+            let displaydeposit= parseInt(depositmoney.value)+parseInt(deposit.innerText);
+            deposit.innerText=displaydeposit;
+            let displayblance=parseInt(depositmoney.value)+parseInt( balance.innerText)
+            balance.innerText=displayblance;
+        } )
+
+        withd.addEventListener("click",()=>{
+            let displayblance=parseInt(balance.innerText) - parseInt(withdrowmoney.value);
+            let displaywithdrow= parseInt(withdrowmoney.value)+parseInt(withdrow.innerText);
+            if(displayblance < 0)
+            {
+                alert("your account not money")
+            }
+            else
+            {
+                if(displaywithdrow <= 10000)
+                {
+                    withdrow.innerText=displaywithdrow;
+                        balance.innerText=displayblance;
+
+                }
+                else
+                {
+                    alert("youe dally limet is 10000 ")
+                    
+                }
+            //    balance.innerText=displayblance;
+            }
+        } )
+    </script>
+</body>
+</html>
